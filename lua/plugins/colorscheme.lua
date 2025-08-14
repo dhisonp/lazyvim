@@ -9,13 +9,13 @@ return {
       vim.g.everforest_enable_italic = true
     end,
   },
+  { "rebelot/kanagawa.nvim" },
 
   -- Set default color scheme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
-      style = "night",
+      colorscheme = "kanagawa",
     },
   },
 }

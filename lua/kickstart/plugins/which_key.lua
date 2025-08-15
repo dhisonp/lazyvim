@@ -43,10 +43,10 @@ return { -- Useful plugin to show you pending keybinds.
 
     -- Document existing key chains
     spec = {
-      { '<leader>s', group = 'Search' },
-      { '<leader>t', group = 'Toggle' },
-      { '<leader>h', group = 'Git Hunk', mode = { 'n', 'v' } },
       { '<leader>f', group = 'FzfLua' },
+      { '<leader>h', group = 'Git Hunk', mode = { 'n', 'v' } },
+      { '<leader>t', group = 'Toggle' },
+      { '<leader>u', group = 'User Interface' },
     },
   },
 }

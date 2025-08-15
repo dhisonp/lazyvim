@@ -37,10 +37,16 @@ return {
       end,
       desc = 'Buffer Tags',
     },
+    {
+      '<leader>fc',
+      function()
+        require('fzf-lua').colorschemes()
+      end,
+      desc = 'Color Schemes',
+    },
   },
   config = function()
     -- Calling setup is optional, but good practice to have in place
     require('fzf-lua').setup {}
   end,
 }
-

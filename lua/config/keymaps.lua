@@ -24,8 +24,8 @@ vim.keymap.set('n', '<leader>pj', '<cmd>Grapple cycle_tags next<cr>', { desc = '
 vim.keymap.set('n', '<leader>pk', '<cmd>Grapple cycle_tags prev<cr>', { desc = 'Prev tag' })
 
 -- toggleterm
-vim.keymap.set('n', '<C-j>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
-vim.keymap.set('t', '<C-j>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
+vim.keymap.set('n', '<C-t>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
+vim.keymap.set('t', '<C-t>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
 
 -- debug
 vim.keymap.set('n', '<F5>', '<cmd>lua require("dap").continue()<CR>', { desc = 'Debug: Start/continue' })
@@ -52,4 +52,5 @@ vim.keymap.set(
 )
 
 -- neo-tree
+-- NOTE: This is only open, and not close tree.
 vim.keymap.set('', '\\', ':Neotree reveal<CR>', { desc = 'NeoTree reveal', silent = true })

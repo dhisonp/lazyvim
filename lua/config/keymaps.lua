@@ -26,8 +26,14 @@ vim.keymap.set('n', '<leader>fg', '<cmd>FzfLua live_grep<CR>', { desc = 'Live gr
 vim.keymap.set('n', '<leader>fb', '<cmd>FzfLua buffers<CR>', { desc = 'Find buffers' })
 vim.keymap.set('n', '<leader>fh', '<cmd>FzfLua help_tags<CR>', { desc = 'Help tags' })
 vim.keymap.set('n', '<leader>ft', '<cmd>FzfLua btags<CR>', { desc = 'Buffer tags' })
-vim.keymap.set('n', '<leader>uc', '<cmd>FzfLua colorschemes<CR>', { desc = 'Select theme' })
 vim.keymap.set('n', '<C-p>', '<cmd>FzfLua files<CR>', { desc = 'Grep visual' })
+
+-- fzf-lua LSP
+vim.keymap.set('n', '<leader>fr', '<cmd>FzfLua lsp_references<CR>', { desc = 'Find references' })
+vim.keymap.set('n', '<leader>fd', '<cmd>FzfLua lsp_definitions<CR>', { desc = 'Go to definition(s)' })
+
+-- fzf-lua etc
+vim.keymap.set('n', '<leader>uc', '<cmd>FzfLua colorschemes<CR>', { desc = 'Select theme' })
 
 -- grapple
 vim.keymap.set('n', '<leader>pt', '<cmd>Grapple toggle<cr>', { desc = 'Toggle tag' })
@@ -66,3 +72,6 @@ vim.keymap.set(
 -- neo-tree
 -- NOTE: This is only open, and not close tree.
 vim.keymap.set('', '\\', ':Neotree reveal<CR>', { desc = 'NeoTree reveal', silent = true })
+
+-- mason and LSP
+vim.keymap.set('n', 'gR', vim.lsp.buf.rename, { desc = 'Rename symbol' })

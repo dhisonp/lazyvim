@@ -29,6 +29,7 @@ return {
             key = 'q',
           },
         },
+        vertical_center = true,
       },
     }
   end,

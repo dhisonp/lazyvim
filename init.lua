@@ -94,7 +94,7 @@ vim.keymap.set(
   'n',
   '<leader>uc',
   '<cmd>FzfLua colorschemes<CR>',
-  { desc = 'Select colorscheme' }
+  { desc = 'Select Theme' }
 )
 vim.keymap.set('n', '<leader>g', '<cmd>LazyGit<CR>', { desc = 'Open Lazygit' })
 

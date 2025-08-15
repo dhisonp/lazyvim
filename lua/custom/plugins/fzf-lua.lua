@@ -45,6 +45,13 @@ return {
       end,
       desc = 'Color Schemes',
     },
+    {
+      '<C-p>',
+      function()
+        require('fzf-lua').files()
+      end,
+      desc = 'Grep Visual',
+    },
   },
   config = function()
     -- Calling setup is optional, but good practice to have in place

@@ -48,6 +48,6 @@ return {
   },
   config = function()
     -- Calling setup is optional, but good practice to have in place
-    require('fzf-lua').setup {}
+    require('fzf-lua').setup({})
   end,
 }

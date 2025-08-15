@@ -19,6 +19,9 @@ return {
           'Trouble',
         },
       },
+      scope = {
+        enabled = false,
+      },
     },
   },
 }

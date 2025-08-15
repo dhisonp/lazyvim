@@ -8,12 +8,17 @@ return {
         center = {
           {
             action = 'FzfLua files',
-            desc = 'Find File',
+            desc = 'Find files',
+            key = 'f',
+          },
+          {
+            action = 'FzfLua oldfiles',
+            desc = 'Find recent files',
             key = 'f',
           },
           {
             action = 'Grapple toggle_tags',
-            desc = 'Grapple Tags',
+            desc = 'Grapple tags',
             key = 'p',
           },
           {

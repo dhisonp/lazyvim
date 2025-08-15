@@ -25,7 +25,6 @@ return {
           vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
-        map('grn', vim.lsp.buf.rename, 'Rename Symbol')
         map('gra', vim.lsp.buf.code_action, 'Goto Code Action', { 'n', 'x' })
         map('grD', vim.lsp.buf.declaration, 'Goto Declaration')
 

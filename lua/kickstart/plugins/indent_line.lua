@@ -5,5 +5,8 @@ return {
     -- See `:help ibl`
     main = 'ibl',
     opts = {},
+    config = function()
+      vim.g.indent_blankline_buftype_exclude = { "dashboard" }
+    end,
   },
 }

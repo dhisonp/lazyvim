@@ -1,6 +1,6 @@
 require 'config.autocmds'
-require 'config.keymaps'
 require 'config.options'
+require 'config.keymaps'
 require 'config.lazy'
 
 -- The line beneath this is called `modeline`. See `:help modeline`

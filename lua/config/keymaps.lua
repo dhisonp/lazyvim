@@ -8,11 +8,17 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Copy file paths
 vim.keymap.set('n', '<leader>fc', function()
-  local relative_path = vim.fn.expand '%'
+  local path = vim.fn.expand '%'
+  vim.fn.setreg('+', path)
+  print(path)
+end, { desc = 'Copy absolute file path' })
+vim.keymap.set('n', '<leader>fr', function()
+  local relative_path = vim.fn.fnamemodify(vim.fn.expand '%', ':.')
   vim.fn.setreg('+', relative_path)
   print(relative_path)
-end, { desc = 'Copy buffer file path' })
+end, { desc = 'Copy relative file path' })
 
 -- fzf-lua
 vim.keymap.set('n', '<leader>ff', '<cmd>FzfLua files<CR>', { desc = 'Find files' })

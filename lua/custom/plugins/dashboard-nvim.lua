@@ -12,14 +12,19 @@ return {
             key = 'f',
           },
           {
-            action = 'Lazy',
-            desc = 'Lazy',
-            key = 'l',
+            action = 'Grapple toggle_tags',
+            desc = 'Grapple Tags',
+            key = 'p',
           },
           {
             action = 'LazyGit',
             desc = 'LazyGit',
             key = 'g',
+          },
+          {
+            action = 'Lazy',
+            desc = 'Lazy',
+            key = 'l',
           },
           {
             action = function()

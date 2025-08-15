@@ -22,6 +22,11 @@ return {
             key = 'g',
           },
           {
+            action = 'Mason',
+            desc = 'Mason',
+            key = 'm',
+          },
+          {
             action = 'Lazy',
             desc = 'Lazy',
             key = 'l',

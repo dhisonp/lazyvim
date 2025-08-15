@@ -45,6 +45,7 @@ return { -- Useful plugin to show you pending keybinds.
     spec = {
       { '<leader>f', group = 'FzfLua' },
       { '<leader>h', group = 'Git Hunk', mode = { 'n', 'v' } },
+      { '<leader>p', group = 'Grapple' },
       { '<leader>t', group = 'Toggle' },
       { '<leader>u', group = 'User Interface' },
     },

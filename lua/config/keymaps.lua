@@ -55,39 +55,39 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- fzf-lua
-vim.keymap.set('n', '<leader>ff', '<cmd>FzfLua files<CR>', { desc = 'Find Files' })
-vim.keymap.set('n', '<leader>fg', '<cmd>FzfLua live_grep<CR>', { desc = 'Live Grep' })
-vim.keymap.set('n', '<leader>fb', '<cmd>FzfLua buffers<CR>', { desc = 'Find Buffers' })
-vim.keymap.set('n', '<leader>fh', '<cmd>FzfLua help_tags<CR>', { desc = 'Help Tags' })
-vim.keymap.set('n', '<leader>ft', '<cmd>FzfLua btags<CR>', { desc = 'Buffer Tags' })
-vim.keymap.set('n', '<leader>uc', '<cmd>FzfLua colorschemes<CR>', { desc = 'Select Theme' })
-vim.keymap.set('n', '<C-p>', '<cmd>FzfLua files<CR>', { desc = 'Grep Visual' })
+vim.keymap.set('n', '<leader>ff', '<cmd>FzfLua files<CR>', { desc = 'Find files' })
+vim.keymap.set('n', '<leader>fg', '<cmd>FzfLua live_grep<CR>', { desc = 'Live grep' })
+vim.keymap.set('n', '<leader>fb', '<cmd>FzfLua buffers<CR>', { desc = 'Find buffers' })
+vim.keymap.set('n', '<leader>fh', '<cmd>FzfLua help_tags<CR>', { desc = 'Help tags' })
+vim.keymap.set('n', '<leader>ft', '<cmd>FzfLua btags<CR>', { desc = 'Buffer tags' })
+vim.keymap.set('n', '<leader>uc', '<cmd>FzfLua colorschemes<CR>', { desc = 'Select theme' })
+vim.keymap.set('n', '<C-p>', '<cmd>FzfLua files<CR>', { desc = 'Grep visual' })
 
 -- grapple
-vim.keymap.set('n', '<leader>pt', '<cmd>Grapple toggle<cr>', { desc = 'Toggle Tag' })
-vim.keymap.set('n', '<leader>pl', '<cmd>Grapple toggle_tags<cr>', { desc = 'Tag List' })
-vim.keymap.set('n', '<leader>pj', '<cmd>Grapple cycle_tags next<cr>', { desc = 'Next Tag' })
-vim.keymap.set('n', '<leader>pk', '<cmd>Grapple cycle_tags prev<cr>', { desc = 'Prev Tag' })
+vim.keymap.set('n', '<leader>pt', '<cmd>Grapple toggle<cr>', { desc = 'Toggle tag' })
+vim.keymap.set('n', '<leader>pl', '<cmd>Grapple toggle_tags<cr>', { desc = 'Tag list' })
+vim.keymap.set('n', '<leader>pj', '<cmd>Grapple cycle_tags next<cr>', { desc = 'Next tag' })
+vim.keymap.set('n', '<leader>pk', '<cmd>Grapple cycle_tags prev<cr>', { desc = 'Prev tag' })
 
 -- toggleterm
-vim.keymap.set('n', '<C-j>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle Terminal' })
-vim.keymap.set('t', '<C-j>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle Terminal' })
+vim.keymap.set('n', '<C-j>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
+vim.keymap.set('t', '<C-j>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
 
 -- debug
-vim.keymap.set('n', '<F5>', '<cmd>lua require("dap").continue()<CR>', { desc = 'Debug: Start/Continue' })
-vim.keymap.set('n', '<F1>', '<cmd>lua require("dap").step_into()<CR>', { desc = 'Debug: Step Into' })
-vim.keymap.set('n', '<F2>', '<cmd>lua require("dap").step_over()<CR>', { desc = 'Debug: Step Over' })
-vim.keymap.set('n', '<F3>', '<cmd>lua require("dap").step_out()<CR>', { desc = 'Debug: Step Out' })
+vim.keymap.set('n', '<F5>', '<cmd>lua require("dap").continue()<CR>', { desc = 'Debug: Start/continue' })
+vim.keymap.set('n', '<F1>', '<cmd>lua require("dap").step_into()<CR>', { desc = 'Debug: Step into' })
+vim.keymap.set('n', '<F2>', '<cmd>lua require("dap").step_over()<CR>', { desc = 'Debug: Step over' })
+vim.keymap.set('n', '<F3>', '<cmd>lua require("dap").step_out()<CR>', { desc = 'Debug: Step out' })
 vim.keymap.set(
   'n',
   '<leader>b',
   '<cmd>lua require("dap").toggle_breakpoint()<CR>',
-  { desc = 'Debug: Toggle Breakpoint' }
+  { desc = 'Debug: Toggle breakpoint' }
 )
 vim.keymap.set('n', '<leader>B', function()
   require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-end, { desc = 'Debug: Set Breakpoint' })
-vim.keymap.set('n', '<F7>', '<cmd>lua require("dapui").toggle()<CR>', { desc = 'Debug: See last session result.' })
+end, { desc = 'Debug: Set breakpoint' })
+vim.keymap.set('n', '<F7>', '<cmd>lua require("dapui").toggle()<CR>', { desc = 'Debug: See last session result' })
 
 -- conform
 vim.keymap.set(

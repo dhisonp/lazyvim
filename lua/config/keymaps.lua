@@ -29,8 +29,10 @@ vim.keymap.set('n', '<leader>ft', '<cmd>FzfLua btags<CR>', { desc = 'Buffer tags
 vim.keymap.set('n', '<C-p>', '<cmd>FzfLua files<CR>', { desc = 'Grep visual' })
 
 -- fzf-lua LSP
+-- TODO: Remap into a faster keymap combination
 vim.keymap.set('n', '<leader>fr', '<cmd>FzfLua lsp_references<CR>', { desc = 'Find references' })
 vim.keymap.set('n', '<leader>fd', '<cmd>FzfLua lsp_definitions<CR>', { desc = 'Go to definition(s)' })
+vim.keymap.set('n', '<leader>fa', '<cmd>FzfLua lsp_code_actions<CR>', { desc = 'See code actions' })
 
 -- fzf-lua etc
 vim.keymap.set('n', '<leader>uc', '<cmd>FzfLua colorschemes<CR>', { desc = 'Select theme' })

@@ -14,7 +14,7 @@ return {
           {
             action = 'FzfLua oldfiles',
             desc = 'Find recent files',
-            key = 'f',
+            key = 'r',
           },
           {
             action = 'Grapple toggle_tags',

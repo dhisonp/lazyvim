@@ -4,7 +4,7 @@ vim.g.have_nerd_font = true
 vim.notify = require 'notify'
 
 -- Color Scheme
-vim.cmd.colorscheme 'sonokai'
+vim.cmd.colorscheme 'gruvbox-material'
 
 -- Editor
 vim.o.number = true

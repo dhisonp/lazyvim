@@ -1,5 +1,8 @@
 vim.g.have_nerd_font = true
 
+-- Notifications
+vim.notify = require 'notify'
+
 -- Color Scheme
 vim.cmd.colorscheme 'sonokai'
 
@@ -23,10 +26,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.confirm = true
 
--- Sync clipboard between OS and Neovim.
---  Schedule the setting after `UiEnter` because it can increase startup-time.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
+-- Sync clipboard between OS and Neovim. See `:help 'clipboard'`
 vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)
@@ -42,6 +42,3 @@ vim.o.splitbelow = true
 
 vim.o.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-
--- Notifications
-vim.notify = require 'notify'

@@ -1,8 +1,7 @@
 return {
-  -- Tokyonight colorscheme
   {
     'folke/tokyonight.nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
+    priority = 1000,
     config = function()
       ---@diagnostic disable-next-line: missing-fields
       require('tokyonight').setup({
@@ -12,14 +11,26 @@ return {
       })
     end,
   },
-
-  -- Kanagawa colorscheme
+  {
+    'sainnhe/gruvbox-material',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.g.gruvbox_material_enable_italic = true
+      vim.g.gruvbox_material_background = 'hard'
+    end,
+  },
+  {
+    'sainnhe/sonokai',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.g.sonokai_enable_italic = true
+      vim.g.sonokai_style = 'maia'
+    end,
+  },
   {
     'rebelot/kanagawa.nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
-    config = function()
-      -- Load the colorscheme here
-      vim.cmd.colorscheme 'kanagawa-dragon'
-    end,
+    priority = 1000,
   },
 }

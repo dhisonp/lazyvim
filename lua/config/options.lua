@@ -1,5 +1,8 @@
 vim.g.have_nerd_font = true
 
+-- Color Scheme
+vim.cmd.colorscheme 'sonokai'
+
 -- Editor
 vim.o.number = true
 vim.o.tabstop = 2

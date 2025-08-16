@@ -43,14 +43,14 @@ return {
             key = 'r',
           },
           {
+            action = 'FzfLua grep_visual',
+            desc = 'Search directory',
+            key = 'g',
+          },
+          {
             action = 'Grapple toggle_tags',
             desc = 'Grapple tags',
             key = 'p',
-          },
-          {
-            action = 'LazyGit',
-            desc = 'LazyGit',
-            key = 'g',
           },
           {
             action = 'Mason',

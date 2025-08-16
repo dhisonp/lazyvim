@@ -12,3 +12,15 @@ This Neovim configuration is designed for developers who value a **lean, minimal
 
 ## Installation
 
+Clone the repository to the default nvim config directory. For MacOS, it's `~/.config/nvim`.
+
+```bash
+git clone git@github.com:dhisonp/lazyvim.git
+```
+
+You should be good to go!
+
+```bash
+cd your/project/directory
+nvim
+```

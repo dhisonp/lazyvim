@@ -43,7 +43,7 @@ return {
             key = 'r',
           },
           {
-            action = 'FzfLua grep_visual',
+            action = 'FzfLua live_grep',
             desc = 'Search directory',
             key = 'g',
           },

@@ -48,16 +48,6 @@ return {
             key = 'g',
           },
           {
-            action = 'Grapple toggle_tags',
-            desc = 'Grapple tags',
-            key = 'p',
-          },
-          {
-            action = 'Mason',
-            desc = 'Mason',
-            key = 'm',
-          },
-          {
             action = 'Lazy',
             desc = 'Lazy',
             key = 'l',

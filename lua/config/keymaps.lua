@@ -113,32 +113,6 @@ vim.keymap.set(
   { desc = 'Select theme' }
 )
 
--- grapple
-vim.keymap.set(
-  'n',
-  '<leader>pt',
-  '<cmd>Grapple toggle<cr>',
-  { desc = 'Toggle tag' }
-)
-vim.keymap.set(
-  'n',
-  '<leader>pl',
-  '<cmd>Grapple toggle_tags<cr>',
-  { desc = 'Tag list' }
-)
-vim.keymap.set(
-  'n',
-  '<leader>pj',
-  '<cmd>Grapple cycle_tags next<cr>',
-  { desc = 'Next tag' }
-)
-vim.keymap.set(
-  'n',
-  '<leader>pk',
-  '<cmd>Grapple cycle_tags prev<cr>',
-  { desc = 'Prev tag' }
-)
-
 -- toggleterm
 vim.keymap.set(
   'n',

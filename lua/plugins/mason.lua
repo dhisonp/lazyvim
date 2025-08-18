@@ -17,20 +17,12 @@ return {
   },
   config = function()
     vim.api.nvim_create_autocmd('LspAttach', {
-      group = vim.api.nvim_create_augroup(
-        'kickstart-lsp-attach',
-        { clear = true }
-      ),
+      group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
         -- for LSP related items. It sets the mode, buffer and description for us each time.
         local map = function(keys, func, desc, mode)
           mode = mode or 'n'
-          vim.keymap.set(
-            mode,
-            keys,
-            func,
-            { buffer = event.buf, desc = 'LSP: ' .. desc }
-          )
+          vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
         map('gra', vim.lsp.buf.code_action, 'Goto Code Action', { 'n', 'x' })
@@ -63,10 +55,8 @@ return {
             event.buf
           )
         then
-          local highlight_augroup = vim.api.nvim_create_augroup(
-            'kickstart-lsp-highlight',
-            { clear = false }
-          )
+          local highlight_augroup =
+            vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
           vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
             buffer = event.buf,
             group = highlight_augroup,
@@ -80,10 +70,7 @@ return {
           })
 
           vim.api.nvim_create_autocmd('LspDetach', {
-            group = vim.api.nvim_create_augroup(
-              'kickstart-lsp-detach',
-              { clear = true }
-            ),
+            group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
             callback = function(event2)
               vim.lsp.buf.clear_references()
               vim.api.nvim_clear_autocmds({
@@ -107,9 +94,7 @@ return {
           )
         then
           map('<leader>uh', function()
-            vim.lsp.inlay_hint.enable(
-              not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf })
-            )
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
           end, 'Toggle Inlay Hints')
         end
       end,
@@ -184,12 +169,8 @@ return {
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}
-          server.capabilities = vim.tbl_deep_extend(
-            'force',
-            {},
-            capabilities,
-            server.capabilities or {}
-          )
+          server.capabilities =
+            vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
           require('lspconfig')[server_name].setup(server)
         end,
       },

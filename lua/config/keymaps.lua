@@ -8,30 +8,10 @@ vim.keymap.set(
 
 vim.keymap.set('n', '<leader>g', '<cmd>LazyGit<CR>', { desc = 'Open Lazygit' })
 
-vim.keymap.set(
-  'n',
-  '<C-h>',
-  '<C-w><C-h>',
-  { desc = 'Move focus to the left window' }
-)
-vim.keymap.set(
-  'n',
-  '<C-l>',
-  '<C-w><C-l>',
-  { desc = 'Move focus to the right window' }
-)
-vim.keymap.set(
-  'n',
-  '<C-j>',
-  '<C-w><C-j>',
-  { desc = 'Move focus to the lower window' }
-)
-vim.keymap.set(
-  'n',
-  '<C-k>',
-  '<C-w><C-k>',
-  { desc = 'Move focus to the upper window' }
-)
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- Copy file paths
 vim.keymap.set('n', '<leader>fc', function()
@@ -46,72 +26,27 @@ vim.keymap.set('n', '<leader>fr', function()
 end, { desc = 'Copy relative file path' })
 
 -- fzf-lua
-vim.keymap.set(
-  'n',
-  '<leader>ff',
-  '<cmd>FzfLua files<CR>',
-  { desc = 'Find files' }
-)
-vim.keymap.set(
-  'n',
-  '<leader>fr',
-  '<cmd>FzfLua oldfiles<CR>',
-  { desc = 'Recent files' }
-)
-vim.keymap.set(
-  'n',
-  '<leader>fg',
-  '<cmd>FzfLua live_grep<CR>',
-  { desc = 'Live grep' }
-)
-vim.keymap.set(
-  'n',
-  '<leader>fb',
-  '<cmd>FzfLua buffers<CR>',
-  { desc = 'Find buffers' }
-)
-vim.keymap.set(
-  'n',
-  '<leader>fh',
-  '<cmd>FzfLua help_tags<CR>',
-  { desc = 'Help tags' }
-)
-vim.keymap.set(
-  'n',
-  '<leader>ft',
-  '<cmd>FzfLua btags<CR>',
-  { desc = 'Buffer tags' }
-)
+vim.keymap.set('n', '<leader>ff', '<cmd>FzfLua files<CR>', { desc = 'Find files' })
+vim.keymap.set('n', '<leader>fr', '<cmd>FzfLua oldfiles<CR>', { desc = 'Recent files' })
+vim.keymap.set('n', '<leader>fg', '<cmd>FzfLua live_grep<CR>', { desc = 'Live grep' })
+vim.keymap.set('n', '<leader>fb', '<cmd>FzfLua buffers<CR>', { desc = 'Find buffers' })
+vim.keymap.set('n', '<leader>fh', '<cmd>FzfLua help_tags<CR>', { desc = 'Help tags' })
+vim.keymap.set('n', '<leader>ft', '<cmd>FzfLua btags<CR>', { desc = 'Buffer tags' })
 vim.keymap.set('n', '<C-p>', '<cmd>FzfLua files<CR>', { desc = 'Grep visual' })
 
 -- fzf-lua LSP
 -- TODO: Remap into a faster keymap combination
-vim.keymap.set(
-  'n',
-  '<leader>fr',
-  '<cmd>FzfLua lsp_references<CR>',
-  { desc = 'Find references' }
-)
+vim.keymap.set('n', '<leader>fr', '<cmd>FzfLua lsp_references<CR>', { desc = 'Find references' })
 vim.keymap.set(
   'n',
   '<leader>fd',
   '<cmd>FzfLua lsp_definitions<CR>',
   { desc = 'Go to definition(s)' }
 )
-vim.keymap.set(
-  'n',
-  '<leader>fa',
-  '<cmd>FzfLua lsp_code_actions<CR>',
-  { desc = 'See code actions' }
-)
+vim.keymap.set('n', '<leader>fa', '<cmd>FzfLua lsp_code_actions<CR>', { desc = 'See code actions' })
 
 -- fzf-lua etc
-vim.keymap.set(
-  'n',
-  '<leader>uc',
-  '<cmd>FzfLua colorschemes<CR>',
-  { desc = 'Select theme' }
-)
+vim.keymap.set('n', '<leader>uc', '<cmd>FzfLua colorschemes<CR>', { desc = 'Select theme' })
 
 -- debug
 vim.keymap.set(
@@ -132,12 +67,7 @@ vim.keymap.set(
   '<cmd>lua require("dap").step_over()<CR>',
   { desc = 'Debug: Step over' }
 )
-vim.keymap.set(
-  'n',
-  '<F3>',
-  '<cmd>lua require("dap").step_out()<CR>',
-  { desc = 'Debug: Step out' }
-)
+vim.keymap.set('n', '<F3>', '<cmd>lua require("dap").step_out()<CR>', { desc = 'Debug: Step out' })
 vim.keymap.set(
   'n',
   '<leader>b',

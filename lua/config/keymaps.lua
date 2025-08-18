@@ -113,20 +113,6 @@ vim.keymap.set(
   { desc = 'Select theme' }
 )
 
--- toggleterm
-vim.keymap.set(
-  'n',
-  '<C-t>',
-  '<cmd>ToggleTerm<CR>',
-  { desc = 'Toggle terminal' }
-)
-vim.keymap.set(
-  't',
-  '<C-t>',
-  '<cmd>ToggleTerm<CR>',
-  { desc = 'Toggle terminal' }
-)
-
 -- debug
 vim.keymap.set(
   'n',
@@ -174,15 +160,6 @@ vim.keymap.set(
   '<leader>F',
   '<cmd>lua require("conform").format({ async = true, lsp_format = "fallback" })<CR>',
   { desc = 'Format buffer' }
-)
-
--- neo-tree
--- NOTE: This is only open, and not close tree.
-vim.keymap.set(
-  '',
-  '\\',
-  ':Neotree reveal<CR>',
-  { desc = 'NeoTree reveal', silent = true }
 )
 
 -- mason and LSP

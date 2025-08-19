@@ -25,8 +25,7 @@ return {
           vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
-        map('gra', vim.lsp.buf.code_action, 'Goto Code Action', { 'n', 'x' })
-        map('grD', vim.lsp.buf.declaration, 'Goto Declaration')
+        
 
         -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
         ---@param client vim.lsp.Client

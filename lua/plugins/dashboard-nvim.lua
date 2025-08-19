@@ -45,6 +45,11 @@ return {
           {
             action = 'FzfLua live_grep',
             desc = 'Search directory',
+            key = '/',
+          },
+          {
+            action = 'LazyGit',
+            desc = 'LazyGit',
             key = 'g',
           },
           {

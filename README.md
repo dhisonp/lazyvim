@@ -1,4 +1,4 @@
-# Lean & Productive Neovim Setup
+<img width="1448" height="1097" alt="Screenshot 2025-08-19 at 3 03 19 PM" src="https://github.com/user-attachments/assets/b2a476b2-547e-40f3-8f10-359b86137b35" />
 
 This directory contains a Neovim configuration based on the "kickstart.nvim" template. It's designed to be a starting point for a personalized Neovim setup, offering a lean, minimalistic, and aesthetically pleasing environment without sacrificing productivity. Built on `lazy.nvim`, it provides a fast and efficient editing experience, focusing on essential plugins and sensible defaults.
 

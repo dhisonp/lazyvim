@@ -29,8 +29,10 @@ return {
       -- vim.g.sonokai_style = 'maia'
     end,
   },
+  { 'miikanissi/modus-themes.nvim', priority = 1000 },
+
   {
-    'rebelot/kanagawa.nvim',
+    'sonokai',
     priority = 1000,
   },
 }

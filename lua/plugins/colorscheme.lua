@@ -13,7 +13,7 @@ return {
   },
   {
     'sainnhe/gruvbox-material',
-    lazy = false,
+    lazy = true,
     priority = 1000,
     config = function()
       vim.g.gruvbox_material_enable_italic = true
@@ -22,17 +22,12 @@ return {
   },
   {
     'sainnhe/sonokai',
-    lazy = false,
+    lazy = true,
     priority = 1000,
     config = function()
       vim.g.sonokai_enable_italic = true
       -- vim.g.sonokai_style = 'maia'
     end,
   },
-  { 'miikanissi/modus-themes.nvim', priority = 1000 },
-
-  {
-    'sonokai',
-    priority = 1000,
-  },
+  { 'miikanissi/modus-themes.nvim', lazy = true, priority = 1000 },
 }

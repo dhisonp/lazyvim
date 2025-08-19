@@ -22,6 +22,9 @@ return {
       scope = {
         enabled = false,
       },
+      indent = {
+        char = '╎',
+      },
     },
   },
 }

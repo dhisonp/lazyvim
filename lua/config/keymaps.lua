@@ -42,3 +42,6 @@ vim.keymap.del('n', 'grr')
 vim.keymap.del('n', 'gra')
 vim.keymap.del('x', 'gra')
 vim.keymap.del('n', 'grn')
+
+-- Neo-tree
+vim.keymap.set('n', '\\', '<cmd>Neotree<CR>', { desc = 'File Explorer' })

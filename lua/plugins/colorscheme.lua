@@ -30,5 +30,6 @@ return {
       -- vim.g.sonokai_style = 'maia'
     end,
   },
+  { 'ayu-theme/ayu-vim', lazy = true, priority = 1000 },
   { 'miikanissi/modus-themes.nvim', lazy = true, priority = 1000 },
 }

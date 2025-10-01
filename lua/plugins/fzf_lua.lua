@@ -4,7 +4,8 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
 
   config = function()
-    -- Calling setup is optional, but good practice to have in place
     require('fzf-lua').setup({})
+    -- Register as vim.ui.select backend to fix code actions
+    require('fzf-lua').register_ui_select()
   end,
 }

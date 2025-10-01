@@ -5,9 +5,9 @@ return { -- Highlight todo, notes, etc in comments
   opts = {
     signs = false,
     highlight = {
-      before = "",
-      keyword = "fg",
-      after = "fg",
+      before = '',
+      keyword = 'fg',
+      after = 'fg',
     },
   },
 }

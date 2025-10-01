@@ -1,7 +1,9 @@
 vim.g.have_nerd_font = true
 
--- Notifications
-vim.notify = require 'notify'
+-- Notifications (lazy-loaded on first use)
+vim.schedule(function()
+  vim.notify = require 'notify'
+end)
 
 -- Color Scheme
 vim.cmd.colorscheme 'gruvbox-material'

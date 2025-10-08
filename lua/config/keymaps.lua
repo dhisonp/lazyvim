@@ -24,6 +24,12 @@ vim.keymap.set('n', 'ga', '<cmd>FzfLua lsp_code_actions<CR>', { desc = 'Code act
 vim.keymap.set('n', 'gr', '<cmd>FzfLua lsp_references<CR>', { desc = 'See references' })
 vim.keymap.set('n', 'gd', '<cmd>FzfLua lsp_definitions<CR>', { desc = 'See definitions' })
 vim.keymap.set('n', '<leader>a', '<cmd>FzfLua lsp_code_actions<CR>', { desc = 'See code actions' })
+vim.keymap.set(
+  'n',
+  '<leader>d',
+  '<cmd>FzfLua diagnostics_workspace<CR>',
+  { desc = 'See workspace diagnostics' }
+)
 
 -- LSP and Code
 vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, { desc = 'Rename symbol' })

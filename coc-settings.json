@@ -1,9 +1,22 @@
 {
+  "coc.preferences.floatActions": false, // This doesn't work for some reason
+  "inlayHint.enable": false,
+
   "Lua.diagnostics.globals": ["vim"],
   "Lua.workspace.library": ["$VIMRUNTIME/lua", "${3rd}/luv/library"],
   "Lua.runtime.version": "LuaJIT",
   "Lua.workspace.checkThirdParty": false,
 
+  "python.analysis.diagnosticMode": "openFilesOnly",
+  "python.analysis.typeCheckingMode": "off",
+  "python.analysis.exclude": [
+    "**/node_modules",
+    "**/__pycache__",
+    "**/.venv",
+    "**/venv"
+  ],
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.useLibraryCodeForTypes": false,
   "python.formatting.provider": "ruff",
   "python.formatting.ruffPath": "ruff",
 

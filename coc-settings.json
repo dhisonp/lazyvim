@@ -1,5 +1,8 @@
 {
   "coc.preferences.floatActions": false, // This doesn't work for some reason
+  "diagnostic.enable": false,
+  "pullDiagnostic.onChange": false,
+  "signature.enable": false,
   "inlayHint.enable": false,
 
   "Lua.diagnostics.globals": ["vim"],

@@ -28,6 +28,7 @@ vim.keymap.set('v', '<C-c>', 'gc', { remap = true })
 -- COC
 vim.keymap.set('n', '<leader>r', '<Plug>(coc-rename)', { desc = 'Rename symbol' })
 vim.keymap.set('i', '<Tab>', [[coc#pum#visible() ? coc#pum#confirm() : "\<Tab>"]], { expr = true, silent = true })
+vim.keymap.set('i', '<C-space>', 'coc#refresh()', { expr = true, silent = true, desc = 'Trigger completion' })
 vim.keymap.set(
   'n',
   '<C-i>',

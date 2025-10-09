@@ -63,7 +63,7 @@ Here are some of the most frequently used keymaps:
 | `<C-l>`     | Move focus to the right window |
 | `<leader>f` | Find files (FzfLua)            |
 | `<leader>/` | Live grep (FzfLua)             |
-| `<C-i>`     | Format buffer (Conform)        |
+| `<C-i>`     | Format buffer (COC)            |
 
 ## Development Conventions
 
@@ -74,9 +74,9 @@ Here are some of the most frequently used keymaps:
 ### Plugin Management
 
 - Plugins are managed through `lazy.nvim`.
-- Plugin specifications are located in `init.lua` and the `lua/custom/plugins/` directory.
+- Plugin specifications are located in `init.lua` and the `lua/plugins/` directory.
 - The `lazy-lock.json` file ensures reproducible plugin versions.
-- Linters and formatters are managed and installed via `mason.nvim`.
+- LSP servers, linters, and formatters are managed via `coc.nvim` extensions.
 
 ### Customization
 

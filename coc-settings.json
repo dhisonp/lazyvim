@@ -1,0 +1,17 @@
+{
+  "Lua.diagnostics.globals": ["vim"],
+  "Lua.workspace.library": ["$VIMRUNTIME/lua", "${3rd}/luv/library"],
+  "Lua.runtime.version": "LuaJIT",
+  "Lua.workspace.checkThirdParty": false,
+
+  "python.formatting.provider": "ruff",
+  "python.formatting.ruffPath": "ruff",
+
+  "languageserver": {
+    "rust": {
+      "command": "rust-analyzer",
+      "filetypes": ["rust"],
+      "rootPatterns": ["Cargo.toml"]
+    }
+  }
+}

@@ -65,6 +65,8 @@ vim.keymap.set(
   '<cmd>CocList diagnostics<CR>',
   { desc = 'See workspace diagnostics' }
 )
+vim.keymap.set('n', ']d', '<Plug>(coc-diagnostic-next)', { desc = 'Next diagnostic', silent = true })
+vim.keymap.set('n', '[d', '<Plug>(coc-diagnostic-prev)', { desc = 'Previous diagnostic', silent = true })
 
 -- Neo-tree
 vim.keymap.set('n', '\\', '<cmd>Neotree toggle<CR>', { desc = 'File explorer' })

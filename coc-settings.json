@@ -7,19 +7,6 @@
   "Lua.runtime.version": "LuaJIT",
   "Lua.workspace.checkThirdParty": false,
 
-  "python.analysis.diagnosticMode": "openFilesOnly",
-  "python.analysis.typeCheckingMode": "off",
-  "python.analysis.exclude": [
-    "**/node_modules",
-    "**/__pycache__",
-    "**/.venv",
-    "**/venv"
-  ],
-  "python.analysis.autoImportCompletions": true,
-  "python.analysis.useLibraryCodeForTypes": false,
-  "python.formatting.provider": "ruff",
-  "python.formatting.ruffPath": "ruff",
-
   "languageserver": {
     "rust": {
       "command": "rust-analyzer",

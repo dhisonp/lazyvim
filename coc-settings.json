@@ -2,6 +2,9 @@
   "coc.preferences.floatActions": false, // This doesn't work for some reason
   "inlayHint.enable": false,
 
+  "ty.experimental.rename": true,
+  "ty.experimental.autoImport": true,
+
   "Lua.diagnostics.globals": ["vim"],
   "Lua.workspace.library": ["$VIMRUNTIME/lua", "${3rd}/luv/library"],
   "Lua.runtime.version": "LuaJIT",

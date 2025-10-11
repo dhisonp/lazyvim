@@ -173,5 +173,20 @@ return {
         end,
       },
     })
+
+    -- Optional: Only required if you need to update the language server settings
+    vim.lsp.config('ty', {
+      settings = {
+        ty = {
+          experimental = {
+            autoImport = true,
+            rename = true,
+          },
+        },
+      },
+    })
+
+    -- Required: Enable the language server
+    vim.lsp.enable 'ty'
   end,
 }

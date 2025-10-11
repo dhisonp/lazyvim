@@ -3,7 +3,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set(
   'n',
   '<leader>q',
-  vim.diagnostic.setloclist,
+  '<cmd>CocList diagnostics<CR>',
   { desc = 'Open diagnostic Quickfix list' }
 )
 
@@ -20,37 +20,53 @@ vim.keymap.set('n', '<leader>f', '<cmd>FzfLua files<CR>', { desc = 'Find files' 
 vim.keymap.set('n', '<leader>/', '<cmd>FzfLua live_grep<CR>', { desc = 'Live grep' })
 vim.keymap.set('n', '<leader>b', '<cmd>FzfLua buffers<CR>', { desc = 'Find buffers' })
 vim.keymap.set('n', '<leader>uc', '<cmd>FzfLua colorschemes<CR>', { desc = 'Select theme' })
-vim.keymap.set('n', 'ga', '<cmd>FzfLua lsp_code_actions<CR>', { desc = 'Code actions' })
-vim.keymap.set('n', 'gr', '<cmd>FzfLua lsp_references<CR>', { desc = 'See references' })
-vim.keymap.set('n', 'gd', '<cmd>FzfLua lsp_definitions<CR>', { desc = 'See definitions' })
-vim.keymap.set('n', '<leader>a', '<cmd>FzfLua lsp_code_actions<CR>', { desc = 'See code actions' })
-vim.keymap.set(
-  'n',
-  '<leader>d',
-  '<cmd>FzfLua diagnostics_workspace<CR>',
-  { desc = 'See workspace diagnostics' }
-)
 
--- LSP and Code
-vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, { desc = 'Rename symbol' })
+-- Commenting
 vim.keymap.set('n', '<C-c>', 'gcc', { remap = true })
 vim.keymap.set('v', '<C-c>', 'gc', { remap = true })
 
--- Conform
+-- COC
+function _G.show_docs()
+  local cw = vim.fn.expand('<cword>')
+  if vim.fn.index({ 'vim', 'help' }, vim.bo.filetype) >= 0 then
+    vim.api.nvim_command('h ' .. cw)
+  elseif vim.api.nvim_eval('coc#rpc#ready()') then
+    vim.fn.CocActionAsync('doHover')
+  else
+    vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
+  end
+end
+vim.keymap.set('n', 'K', '<CMD>lua _G.show_docs()<CR>', { desc = 'Show documentation', silent = true })
+vim.keymap.set('n', '<leader>r', '<Plug>(coc-rename)', { desc = 'Rename symbol' })
+vim.keymap.set(
+  'i',
+  '<Tab>',
+  [[coc#pum#visible() ? coc#pum#confirm() : "\<Tab>"]],
+  { expr = true, silent = true }
+)
+vim.keymap.set(
+  'i',
+  '<C-space>',
+  'coc#refresh()',
+  { expr = true, silent = true, desc = 'Trigger completion' }
+)
 vim.keymap.set(
   'n',
   '<C-i>',
-  '<cmd>lua require("conform").format({ async = true, lsp_format = "fallback" })<CR>',
+  '<cmd>CocCommand editor.action.formatDocument<CR>',
   { desc = 'Format buffer' }
 )
-
--- Disable Default LSP Keymaps (gr_ keymaps)
-vim.keymap.del('n', 'grt')
-vim.keymap.del('n', 'gri')
-vim.keymap.del('n', 'grr')
-vim.keymap.del('n', 'gra')
-vim.keymap.del('x', 'gra')
-vim.keymap.del('n', 'grn')
+vim.keymap.set('n', 'gr', '<Plug>(coc-references)', { desc = 'See references' })
+vim.keymap.set('n', 'gd', '<Plug>(coc-definition)', { desc = 'See definitions' })
+vim.keymap.set('n', '<leader>a', '<Plug>(coc-codeaction-cursor)', { desc = 'See code actions' })
+vim.keymap.set(
+  'n',
+  '<leader>d',
+  '<cmd>CocList diagnostics<CR>',
+  { desc = 'See workspace diagnostics' }
+)
+vim.keymap.set('n', ']d', '<Plug>(coc-diagnostic-next)', { desc = 'Next diagnostic', silent = true })
+vim.keymap.set('n', '[d', '<Plug>(coc-diagnostic-prev)', { desc = 'Previous diagnostic', silent = true })
 
 -- Neo-tree
 vim.keymap.set('n', '\\', '<cmd>Neotree toggle<CR>', { desc = 'File explorer' })

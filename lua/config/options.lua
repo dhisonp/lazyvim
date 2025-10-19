@@ -35,7 +35,7 @@ end)
 
 vim.o.signcolumn = 'yes'
 
-vim.o.updatetime = 250
+vim.o.updatetime = 300
 vim.o.timeoutlen = 300
 
 -- Windows

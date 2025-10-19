@@ -13,14 +13,6 @@ return {
     end,
   },
   {
-    'sainnhe/gruvbox-material',
-    lazy = true,
-    priority = 1000,
-    config = function()
-      vim.g.gruvbox_material_enable_italic = true
-      vim.g.gruvbox_material_background = 'hard'
-    end,
-  },
   { 'ayu-theme/ayu-vim', lazy = true, priority = 1000 },
   { 'miikanissi/modus-themes.nvim', lazy = true, priority = 1000 },
   { 'rebelot/kanagawa.nvim', lazy = true, priority = 1000 },

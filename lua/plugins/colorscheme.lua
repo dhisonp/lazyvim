@@ -21,15 +21,7 @@ return {
       vim.g.gruvbox_material_background = 'hard'
     end,
   },
-  {
-    'sainnhe/sonokai',
-    lazy = true,
-    priority = 1000,
-    config = function()
-      vim.g.sonokai_enable_italic = true
-      -- vim.g.sonokai_style = 'maia'
-    end,
-  },
   { 'ayu-theme/ayu-vim', lazy = true, priority = 1000 },
   { 'miikanissi/modus-themes.nvim', lazy = true, priority = 1000 },
+  { 'rebelot/kanagawa.nvim', lazy = true, priority = 1000 },
 }

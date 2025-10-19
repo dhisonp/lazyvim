@@ -133,7 +133,24 @@ return {
     local capabilities = require('blink.cmp').get_lsp_capabilities()
 
     local servers = {
-      -- pyright = {},
+      pyright = {
+        settings = {
+          python = {
+            analysis = {
+              diagnosticMode = 'openFilesOnly',
+              typeCheckingMode = 'off',
+              exclude = {
+                '**/node_modules',
+                '**/__pycache__',
+                '**/.venv',
+                '**/venv',
+              },
+              autoImportCompletions = true,
+              useLibraryCodeForTypes = false,
+            },
+          },
+        },
+      },
       -- rust_analyzer = {},
       -- ts_ls = {},
 

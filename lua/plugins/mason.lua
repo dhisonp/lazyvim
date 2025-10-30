@@ -133,37 +133,12 @@ return {
     local capabilities = require('blink.cmp').get_lsp_capabilities()
 
     local servers = {
-      pyright = {
-        settings = {
-          python = {
-            analysis = {
-              diagnosticMode = 'openFilesOnly',
-              typeCheckingMode = 'off',
-              exclude = {
-                '**/node_modules',
-                '**/__pycache__',
-                '**/.venv',
-                '**/venv',
-              },
-              autoImportCompletions = true,
-              useLibraryCodeForTypes = false,
-            },
-          },
-        },
-      },
-      -- rust_analyzer = {},
-      -- ts_ls = {},
-
       lua_ls = {
-        -- cmd = { ... },
-        -- filetypes = { ... },
-        -- capabilities = {},
         settings = {
           Lua = {
             completion = {
               callSnippet = 'Replace',
             },
-            -- diagnostics = { disable = { 'missing-fields' } },
           },
         },
       },
@@ -191,7 +166,7 @@ return {
       },
     })
 
-    -- Optional: Only required if you need to update the language server settings
+    -- Ty
     vim.lsp.config('ty', {
       settings = {
         ty = {
@@ -202,8 +177,48 @@ return {
         },
       },
     })
-
-    -- Required: Enable the language server
     vim.lsp.enable 'ty'
+
+    -- Vue
+    local vue_language_server_path =
+      '/Users/dhison/.nvm/versions/node/v24.3.0/lib/node_modules/@vue/language-server'
+    local tsserver_filetypes =
+      { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
+    local vue_plugin = {
+      name = '@vue/typescript-plugin',
+      location = vue_language_server_path,
+      languages = { 'vue' },
+      configNamespace = 'typescript',
+    }
+    local vtsls_config = {
+      settings = {
+        vtsls = {
+          tsserver = {
+            globalPlugins = {
+              vue_plugin,
+            },
+          },
+        },
+      },
+      filetypes = tsserver_filetypes,
+    }
+    local vue_ls_config = {
+      on_attach = function(client, bufnr)
+        -- Disable semantic tokens for vue_ls to reduce false errors
+        client.server_capabilities.semanticTokensProvider = nil
+      end,
+      settings = {
+        vue = {
+          inlayHints = {
+            inlineHandlerLeading = false,
+            missingProps = false,
+            optionsWrapper = false,
+          },
+        },
+      },
+    }
+    vim.lsp.config('vtsls', vtsls_config)
+    vim.lsp.config('vue_ls', vue_ls_config)
+    vim.lsp.enable({ 'vtsls', 'vue_ls' })
   end,
 }

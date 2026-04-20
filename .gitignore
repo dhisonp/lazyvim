@@ -8,3 +8,4 @@ foo.*
 data
 .env
 *DS_STORE
+*.swp

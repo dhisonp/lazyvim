@@ -13,4 +13,6 @@ return {
     end,
   },
   { 'rebelot/kanagawa.nvim', lazy = true, priority = 1000 },
+  { 'sainnhe/gruvbox-material', lazy = true, priority = 1000 },
+  { 'miikanissi/modus-themes.nvim', lazy = true, priority = 1000 },
 }

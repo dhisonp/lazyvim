@@ -1,5 +1,9 @@
 vim.g.have_nerd_font = true
 
+-- Disable unused providers to suppress healthcheck warnings
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+
 -- Notifications (lazy-loaded on first use)
 vim.schedule(function()
   vim.notify = require 'notify'

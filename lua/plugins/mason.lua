@@ -16,6 +16,11 @@ return {
     'saghen/blink.cmp',
   },
   config = function()
+    -- Reduce LSP log verbosity to prevent log bloat (Neovim 0.11+)
+    if vim.lsp.log and vim.lsp.log.set_level then
+      vim.lsp.log.set_level(vim.log.levels.ERROR)
+    end
+
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
@@ -126,8 +131,6 @@ return {
       },
     })
 
-    local autoformat = false
-
     -- LSP servers and clients are able to communicate to each other what features they support.
     --  By default, Neovim doesn't support everything that is in the LSP specification.
     --  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
@@ -181,9 +184,9 @@ return {
     })
     vim.lsp.enable 'ty'
 
-    -- Vue
-    local vue_language_server_path =
-      '/Users/dhison/.nvm/versions/node/v24.3.0/lib/node_modules/@vue/language-server'
+    -- Vue - use Mason-managed language server
+    local mason_packages = vim.fn.stdpath('data') .. '/mason/packages'
+    local vue_language_server_path = mason_packages .. '/vue-language-server/node_modules/@vue/language-server'
     local tsserver_filetypes =
       { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
     local vue_plugin = {

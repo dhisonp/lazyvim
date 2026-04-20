@@ -6,7 +6,7 @@ vim.schedule(function()
 end)
 
 -- Color Scheme
-vim.cmd.colorscheme 'gruvbox-material'
+vim.cmd.colorscheme 'tokyonight'
 
 -- Editor
 vim.o.number = true

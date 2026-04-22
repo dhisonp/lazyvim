@@ -7,5 +7,5 @@ foo.*
 *.log
 data
 .env
-*DS_STORE
+.DS_Store
 *.swp

@@ -33,14 +33,8 @@ lua/plugins/              # Plugin specs (one file per plugin)
 
 ## Treesitter Parsers
 
-Bundled parsers (lua, vim, vimdoc, markdown, query, c) work out of the box. Install others with the built-in API:
+Parsers are automatically managed via `nvim-treesitter`. When you open a file, if the parser isn't installed, it will be automatically downloaded and compiled.
 
-```vim
-" Single parser
-:lua vim.treesitter.install('python')
-
-" Multiple parsers
-:lua for _, p in ipairs({'python', 'javascript', 'css'}) do vim.treesitter.install(p) end
-```
+You can also specify exactly which parsers you always want available in `lua/plugins/treesitter.lua` under the `ensure_installed` array.
 
 Formatted with [StyLua](https://github.com/JohnnyMorganz/StyLua) — see `.stylua.toml`.

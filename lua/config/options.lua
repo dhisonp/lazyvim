@@ -4,13 +4,8 @@ vim.g.have_nerd_font = true
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 
--- Notifications (lazy-loaded on first use)
-vim.schedule(function()
-  vim.notify = require 'notify'
-end)
-
 -- Color Scheme
-vim.cmd.colorscheme 'tokyonight'
+vim.cmd.colorscheme 'tokyonight-storm'
 
 -- Editor
 vim.o.number = true

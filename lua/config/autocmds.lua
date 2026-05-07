@@ -1,9 +1,8 @@
 --  Auto Commands
 --  See `:help lua-guide-autocommands`
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'prisma',
   callback = function()
-    vim.hl.on_yank()
+    vim.treesitter.start()
   end,
 })

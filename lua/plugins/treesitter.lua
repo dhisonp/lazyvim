@@ -1,7 +1,7 @@
 return {
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
-  branch = 'master',
+  branch = 'main',
   event = { 'BufReadPost', 'BufNewFile' },
   opts = {
     -- A list of parser names, or "all"

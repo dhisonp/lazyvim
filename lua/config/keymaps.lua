@@ -6,6 +6,11 @@ vim.keymap.set(
   vim.diagnostic.setloclist,
   { desc = 'Open diagnostic Quickfix list' }
 )
+vim.keymap.set(
+  'n',
+  '<C-n>',
+  ":let @+ = expand('%:p')<CR>"
+)
 
 -- Window Navigation
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
@@ -38,8 +43,7 @@ vim.keymap.set('v', '<C-c>', 'gc', { remap = true })
 vim.keymap.set(
   'n',
   '<C-i>',
-  '<cmd>lua require("conform").format({ async = true, lsp_format = "fallback" })<CR>',
-  { desc = 'Format buffer' }
+  '<cmd>lua require("conform").format({ async = true, lsp_format = "fallback" })<CR>'
 )
 
 -- Disable Default LSP Keymaps (gr_ keymaps)

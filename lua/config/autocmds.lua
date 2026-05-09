@@ -2,7 +2,7 @@
 --  See `:help lua-guide-autocommands`
 vim.api.nvim_create_autocmd('CursorHold', {
   callback = function()
-    vim.diagnostic.open_float({ focusable = false })
+    vim.diagnostic.open_float({ focusable = false, scope = 'cursor' })
   end,
 })
 

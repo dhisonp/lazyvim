@@ -9,7 +9,7 @@ vim.keymap.set(
 vim.keymap.set(
   'n',
   '<C-n>',
-  ":let @+ = expand('%:p')<CR>"
+  ":let @+ = expand('%')<CR>"
 )
 
 -- Window Navigation

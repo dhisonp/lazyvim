@@ -5,7 +5,7 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 
 -- Color Scheme
--- vim.cmd.colorscheme ''
+vim.cmd.colorscheme 'vim'
 
 -- Editor
 vim.o.number = true
@@ -27,6 +27,7 @@ vim.o.undofile = false
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.confirm = true
+vim.opt.shortmess:append 'I'
 
 -- Sync clipboard between OS and Neovim. See `:help 'clipboard'`
 vim.schedule(function()

@@ -5,7 +5,7 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 
 -- Color Scheme
--- vim.cmd.colorscheme 'vim'
+vim.cmd.colorscheme 'oxocarbon'
 
 -- Editor
 vim.o.number = true
@@ -45,3 +45,6 @@ vim.o.splitbelow = true
 
 vim.o.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+-- Preserve formatter's decision on trailing newlines
+vim.opt.fixendofline = false

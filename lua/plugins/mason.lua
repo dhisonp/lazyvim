@@ -160,5 +160,17 @@ return {
     vim.lsp.config('vtsls', vtsls_config)
     vim.lsp.config('vue_ls', vue_ls_config)
     vim.lsp.enable({ 'vtsls', 'vue_ls' })
+
+    -- ESLint: lint only. Prettier (via conform) owns formatting, so disable
+    -- eslint-lsp's formatting to avoid EOF/newline conflicts, and run fixes on save.
+    vim.lsp.config('eslint', {
+      settings = { format = false },
+      on_attach = function(client, bufnr)
+        vim.api.nvim_create_autocmd('BufWritePre', {
+          buffer = bufnr,
+          command = 'EslintFixAll',
+        })
+      end,
+    })
   end,
 }

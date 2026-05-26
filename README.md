@@ -26,10 +26,10 @@ lua/plugins/              # Plugin specs (one file per plugin)
 
 ## Commands
 
-| Command        | Description             |
-| -------------- | ----------------------- |
-| `:Lazy`        | Manage plugins          |
-| `:checkhealth` | Diagnose issues         |
+| Command        | Description     |
+| -------------- | --------------- |
+| `:Lazy`        | Manage plugins  |
+| `:checkhealth` | Diagnose issues |
 
 ## Treesitter Parsers
 

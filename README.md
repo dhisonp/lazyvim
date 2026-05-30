@@ -11,7 +11,11 @@ nvim
 
 Plugins install automatically on first launch.
 
-**Prerequisites:** Neovim 0.12+, a Nerd Font, `git`, `fd`, `ripgrep`
+**Prerequisites:** Neovim 0.12+, a Nerd Font, a C compiler (for Treesitter parsers), `git`, `fd`, `ripgrep`
+
+LSP servers and formatters are installed automatically via Mason (see `lua/plugins/mason.lua`).
+The Python language server [`ty`](https://github.com/astral-sh/ty) is the one exception — install
+it separately (e.g. `uv tool install ty`) so it is available on `PATH`.
 
 ## Structure
 
@@ -31,10 +35,12 @@ lua/plugins/              # Plugin specs (one file per plugin)
 | `:Lazy`        | Manage plugins  |
 | `:checkhealth` | Diagnose issues |
 
-## Treesitter Parsers
+## Treesitter
 
-Parsers are automatically managed via `nvim-treesitter`. When you open a file, if the parser isn't installed, it will be automatically downloaded and compiled.
-
-You can also specify exactly which parsers you always want available in `lua/plugins/treesitter.lua` under the `ensure_installed` array.
+Highlighting uses the `main` branch of `nvim-treesitter`. The parser set is declared
+explicitly in `lua/plugins/treesitter.lua` via `require('nvim-treesitter').install({...})`
+and a `FileType` autocmd calls `vim.treesitter.start()` to enable highlighting wherever a
+parser is available. Add a language by appending its parser to that list; run `:TSUpdate`
+to refresh installed parsers.
 
 Formatted with [StyLua](https://github.com/JohnnyMorganz/StyLua) — see `.stylua.toml`.

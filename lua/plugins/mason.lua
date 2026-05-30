@@ -80,18 +80,25 @@ return {
 
     require('mason-tool-installer').setup({
       ensure_installed = {
-        'lua_ls',
+        -- LSP servers
+        'lua-language-server',
+        'vtsls',
+        'vue-language-server',
+        'eslint-lsp',
+        'prisma-language-server',
+        'json-lsp',
+        'taplo',
+        'dockerfile-language-server',
+        'docker-compose-language-service',
+        -- Formatters
         'stylua',
-        'markdownlint',
+        'prettier',
       },
     })
 
-    require('mason-lspconfig').setup({
-      -- Auto-enable all installed servers except those managed explicitly via vim.lsp.enable below
-      automatic_enable = {
-        exclude = { 'basedpyright', 'lua_ls', 'vtsls', 'vue_ls' },
-      },
-    })
+    -- Enable servers explicitly (below) instead of auto-enabling whatever Mason
+    -- happens to have installed. Keeps exactly one server per filetype, predictably.
+    require('mason-lspconfig').setup({ automatic_enable = false })
 
     -- Lua
     vim.lsp.config('lua_ls', {
@@ -105,14 +112,11 @@ return {
     })
     vim.lsp.enable 'lua_ls'
 
-    -- Ty
+    -- Ty (Python) - installed externally via uv (~/.local/bin/ty), not Mason-managed
     vim.lsp.config('ty', {
       settings = {
         ty = {
-          experimental = {
-            autoImport = true,
-            rename = true,
-          },
+          completions = { autoImport = true },
         },
       },
     })
@@ -167,10 +171,21 @@ return {
       settings = { format = false },
       on_attach = function(client, bufnr)
         vim.api.nvim_create_autocmd('BufWritePre', {
+          group = vim.api.nvim_create_augroup('eslint-fix-on-save', { clear = false }),
           buffer = bufnr,
           command = 'EslintFixAll',
         })
       end,
+    })
+
+    -- Servers that need no extra config beyond lspconfig's defaults
+    vim.lsp.enable({
+      'eslint',
+      'prismals',
+      'jsonls',
+      'taplo',
+      'dockerls',
+      'docker_compose_language_service',
     })
   end,
 }

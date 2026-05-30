@@ -11,7 +11,6 @@ return { -- Useful plugin to show you pending keybinds.
 
     -- Document existing key chains
     spec = {
-      { '<leader>f', group = 'FzfLua' },
       { '<leader>h', group = 'Git Hunk', mode = { 'n', 'v' } },
       { '<leader>u', group = 'User Interface' },
     },

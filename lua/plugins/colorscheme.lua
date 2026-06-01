@@ -1,3 +1,6 @@
 return {
-  { 'nyoom-engineering/oxocarbon.nvim' },
+  'jwbaldwin/oscura.nvim',
+  lazy = false,
+  priority = 1000,
+  opts = {},
 }

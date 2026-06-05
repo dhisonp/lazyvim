@@ -16,6 +16,9 @@ vim.o.cursorline = true
 vim.o.inccommand = 'split'
 vim.o.scrolloff = 10
 vim.opt.wrap = false
+--
+-- File handling
+vim.opt.swapfile = false
 
 -- Mouse
 vim.o.mouse = 'a'

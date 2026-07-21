@@ -16,8 +16,6 @@ return {
     'saghen/blink.cmp',
   },
   config = function()
-    vim.lsp.log.set_level(vim.log.levels.ERROR)
-
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
       callback = function(event)
@@ -173,7 +171,14 @@ return {
         vim.api.nvim_create_autocmd('BufWritePre', {
           group = vim.api.nvim_create_augroup('eslint-fix-on-save', { clear = false }),
           buffer = bufnr,
-          command = 'EslintFixAll',
+          callback = function()
+            client:request_sync('workspace/executeCommand', {
+              command = 'eslint.applyAllFixes',
+              arguments = {
+                { uri = vim.uri_from_bufnr(bufnr), version = vim.lsp.util.buf_versions[bufnr] },
+              },
+            }, nil, bufnr)
+          end,
         })
       end,
     })

@@ -10,6 +10,9 @@ return {
         width = 0.80,
         preview = {
           scrollbar = false,
+          -- Tested against the fzf window's inner width (0.80 * terminal),
+          -- so 95 keeps the horizontal split down to ~124-cell terminals.
+          flip_columns = 88,
         },
       },
       files = {

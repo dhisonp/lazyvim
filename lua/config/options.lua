@@ -5,7 +5,7 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 
 -- Color Scheme
-vim.cmd.colorscheme 'catppuccin'
+vim.cmd.colorscheme 'tokyonight'
 
 -- Editor
 vim.o.number = true

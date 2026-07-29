@@ -110,14 +110,6 @@ return {
     })
     vim.lsp.enable 'lua_ls'
 
-    -- Ty (Python) - installed externally via uv (~/.local/bin/ty), not Mason-managed
-    vim.lsp.config('ty', {
-      settings = {
-        ty = {
-          completions = { autoImport = true },
-        },
-      },
-    })
     vim.lsp.enable 'ty'
 
     -- Vue - use Mason-managed language server

@@ -9,9 +9,10 @@ return { -- Autoformat
       lua = { 'stylua' },
       markdown = { 'prettier' },
       javascript = { 'prettier' },
-      typescript = { 'prettier' },
       javascriptreact = { 'prettier' },
+      python = { 'ruff_organize_imports', 'ruff_format' },
       typescriptreact = { 'prettier' },
+      typescript = { 'prettier' },
       vue = { 'prettier' },
     },
     formatters = {

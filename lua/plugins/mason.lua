@@ -78,25 +78,21 @@ return {
 
     require('mason-tool-installer').setup({
       ensure_installed = {
-        -- LSP servers
-        'lua-language-server',
-        'vtsls',
-        'vue-language-server',
-        'eslint-lsp',
-        'prisma-language-server',
-        'json-lsp',
-        'taplo',
         'dockerfile-language-server',
         'docker-compose-language-service',
-        -- Formatters
-        'stylua',
+        'eslint-lsp',
+        'json-lsp',
+        'lua-language-server',
         'prettier',
+        'prisma-language-server',
+        'ruff',
+        'stylua',
+        'taplo',
+        'vtsls',
       },
     })
 
-    -- Enable servers explicitly (below) instead of auto-enabling whatever Mason
-    -- happens to have installed. Keeps exactly one server per filetype, predictably.
-    require('mason-lspconfig').setup({ automatic_enable = false })
+    require('mason-lspconfig').setup({ automatic_enable = true })
 
     -- Lua
     vim.lsp.config('lua_ls', {
@@ -108,9 +104,17 @@ return {
         },
       },
     })
-    vim.lsp.enable 'lua_ls'
-
     vim.lsp.enable 'ty'
+
+    -- Ruff: lint only. ty owns hover/types, conform's ruff_format owns
+    -- formatting, so disable both here to avoid duplicate/conflicting results.
+    vim.lsp.config('ruff', {
+      on_attach = function(client)
+        client.server_capabilities.hoverProvider = false
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+      end,
+    })
 
     -- Vue - use Mason-managed language server
     local mason_packages = vim.fn.stdpath 'data' .. '/mason/packages'
@@ -153,7 +157,6 @@ return {
     }
     vim.lsp.config('vtsls', vtsls_config)
     vim.lsp.config('vue_ls', vue_ls_config)
-    vim.lsp.enable({ 'vtsls', 'vue_ls' })
 
     -- ESLint: lint only. Prettier (via conform) owns formatting, so disable
     -- eslint-lsp's formatting to avoid EOF/newline conflicts, and run fixes on save.
@@ -173,16 +176,6 @@ return {
           end,
         })
       end,
-    })
-
-    -- Servers that need no extra config beyond lspconfig's defaults
-    vim.lsp.enable({
-      'eslint',
-      'prismals',
-      'jsonls',
-      'taplo',
-      'dockerls',
-      'docker_compose_language_service',
     })
   end,
 }

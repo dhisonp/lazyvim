@@ -141,7 +141,7 @@ return {
       filetypes = tsserver_filetypes,
     }
     local vue_ls_config = {
-      on_attach = function(client, bufnr)
+      on_attach = function(client)
         -- Disable semantic tokens for vue_ls to reduce false errors
         client.server_capabilities.semanticTokensProvider = nil
       end,

@@ -134,8 +134,6 @@ vim.lsp.config('ruff', {
   root_dir = root_with_fallback({ 'ruff.toml', '.ruff.toml', 'pyproject.toml', '.git' }),
   on_attach = function(client)
     client.server_capabilities.hoverProvider = false
-    client.server_capabilities.documentFormattingProvider = false
-    client.server_capabilities.documentRangeFormattingProvider = false
   end,
 })
 
@@ -208,6 +206,17 @@ vim.lsp.config('zls', {
   filetypes = { 'zig', 'zir' },
   root_markers = { 'build.zig.zon', 'build.zig', '.git' },
 })
+
+vim.api.nvim_create_user_command('Fmt', function(opts)
+  local range
+  if opts.range > 0 then
+    range = {
+      start = { opts.line1, 0 },
+      ['end'] = { opts.line2, vim.fn.col({ opts.line2, '$' }) - 1 },
+    }
+  end
+  vim.lsp.buf.format({ range = range })
+end, { range = true, desc = 'Format buffer or range via LSP' })
 
 -- Enable
 vim.lsp.enable({

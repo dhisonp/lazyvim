@@ -7,7 +7,7 @@ over config wherever they do the job.
 ## Setup
 
 ```bash
-git clone git@github.com:dhisonp/lazyvim.git ~/.config/nvim
+git clone git@github.com:dhisonp/nvim-config.git ~/.config/nvim
 nvim
 ```
 

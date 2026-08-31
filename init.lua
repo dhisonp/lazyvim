@@ -220,11 +220,22 @@ if ok_ts then
   })
 end
 
--- fzf-lua. Left at defaults on purpose: fzf-lua already prefers ripgrep for
--- the grep/live_grep providers and fd for files when they are on $PATH.
+-- fzf-lua. Providers are left at defaults on purpose: fzf-lua already prefers
+-- ripgrep for grep/live_grep and fd for files when they are on $PATH.
 local ok_fzf, fzf = pcall(require, 'fzf-lua')
 if ok_fzf then
-  fzf.setup({})
+  fzf.setup({
+    winopts = {
+      preview = {
+        -- 'flex' picks the layout by width: vertical (preview below the list)
+        -- when the fzf window is <= flip_columns, horizontal above it. The
+        -- width tested is fzf's own window, i.e. winopts.width (0.80) of
+        -- vim.o.columns -- not the raw terminal width.
+        layout = 'flex',
+        flip_columns = 128,
+      },
+    },
+  })
   fzf.register_ui_select()
 end
 

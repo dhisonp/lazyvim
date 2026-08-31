@@ -1,7 +1,3 @@
--- Native vim.lsp.config()/vim.lsp.enable() only -- no Mason, no nvim-lspconfig.
--- Every server here mirrors ~/.config/helix/languages.toml so Helix and Neovim
--- share one set of installed binaries; `cmd` is spelled out since there's no lspconfig default.
-
 local ts_filetypes = {
   'javascript',
   'javascriptreact',
@@ -9,10 +5,6 @@ local ts_filetypes = {
   'typescriptreact',
 }
 
--- Servers that are useful on standalone files fall back to the file's own
--- directory when no project marker is found. Without any root_dir, taplo and
--- lua_ls decline to analyse the buffer at all ("document has been excluded").
--- This matches how Helix roots a lone file.
 local function root_with_fallback(markers)
   return function(bufnr, on_dir)
     local fname = vim.api.nvim_buf_get_name(bufnr)
@@ -31,6 +23,7 @@ vim.lsp.config('vtsls', {
   root_markers = { 'tsconfig.json', 'jsconfig.json', 'package.json', '.git' },
 })
 
+-- TODO: Clean noisy ESLint LSP definition
 -- ESLint: lint only. It is the sole formatter-adjacent tool here, and runs
 -- its fixes on save rather than owning documentFormatting.
 vim.lsp.config('eslint', {
@@ -134,8 +127,7 @@ vim.lsp.config('ty', {
   }),
 })
 
--- ruff is the linter; ty owns hover and go-to. Formatting stays off so it
--- never competes with ty over the same buffer.
+-- Ruff
 vim.lsp.config('ruff', {
   cmd = { 'ruff', 'server' },
   filetypes = { 'python' },
@@ -210,6 +202,13 @@ vim.lsp.config('lua_ls', {
   },
 })
 
+-- Zig
+vim.lsp.config('zls', {
+  cmd = { 'zls' },
+  filetypes = { 'zig', 'zir' },
+  root_markers = { 'build.zig.zon', 'build.zig', '.git' },
+})
+
 -- Enable
 vim.lsp.enable({
   'eslint',
@@ -220,4 +219,5 @@ vim.lsp.enable({
   'ty',
   'vtsls',
   'yamlls',
+  'zls',
 })

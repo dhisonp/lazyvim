@@ -47,30 +47,29 @@ vim.lsp.config('eslint', {
     'package.json',
     '.git',
   },
+  -- Most of this is a crash guard, not preference: the server reads these paths
+  -- with no optional chaining, so omitting any of experimental, problems,
+  -- codeAction, rulesCustomizations or nodePath throws at runtime. Do not trim
+  -- them as "obvious defaults". workingDirectory is also load-bearing -- setting
+  -- it at all suppresses per-file module resolution in favour of the root.
   settings = {
     validate = 'on',
     format = false,
-    -- The server dereferences settings.experimental.useFlatConfig on startup;
-    -- omitting it crashes textDocument/diagnostic.
-    experimental = { useFlatConfig = false },
-    quiet = false,
     run = 'onType',
     onIgnoredFiles = 'off',
-    useESLintClass = false,
+    experimental = { useFlatConfig = false },
     problems = { shortenToSingleLine = false },
     nodePath = '',
     rulesCustomizations = {},
-    codeActionOnSave = { enable = false, mode = 'all' },
     workingDirectory = { mode = 'location' },
     codeAction = {
       disableRuleComment = { enable = true, location = 'separateLine' },
       showDocumentation = { enable = true },
     },
   },
-  -- The server requires workspaceFolder in its settings before initialize.
+  -- The server reads workspaceFolder out of its settings during initialize.
   before_init = function(_, config)
     local root = config.root_dir or vim.fn.getcwd()
-    config.settings = config.settings or {}
     config.settings.workspaceFolder = {
       uri = vim.uri_from_fname(root),
       name = vim.fn.fnamemodify(root, ':t'),
@@ -97,19 +96,28 @@ vim.lsp.config('eslint', {
       return {}
     end,
   },
-  on_attach = function(client, bufnr)
-    vim.api.nvim_create_autocmd('BufWritePre', {
-      group = vim.api.nvim_create_augroup('eslint-fix-on-save', { clear = false }),
-      buffer = bufnr,
-      callback = function()
-        client:request_sync('workspace/executeCommand', {
-          command = 'eslint.applyAllFixes',
-          arguments = {
-            { uri = vim.uri_from_bufnr(bufnr), version = vim.lsp.util.buf_versions[bufnr] },
-          },
-        }, nil, bufnr)
-      end,
-    })
+})
+
+-- eslint has no willSaveWaitUntil, so fixes go through an explicit command
+-- before write. Registered once here rather than in on_attach: a plain `:e`
+-- detaches and re-attaches the client, and nvim_create_autocmd does not dedupe,
+-- so per-attach registration stacks up a blocking request per reload.
+vim.api.nvim_create_autocmd('BufWritePre', {
+  group = vim.api.nvim_create_augroup('eslint-fix-on-save', { clear = true }),
+  callback = function(ev)
+    for _, client in ipairs(vim.lsp.get_clients({ bufnr = ev.buf, name = 'eslint' })) do
+      -- Explicit timeout: the default is 1000ms, long enough for a wedged
+      -- server to stall every save.
+      local res = client:request_sync('workspace/executeCommand', {
+        command = 'eslint.applyAllFixes',
+        arguments = {
+          { uri = vim.uri_from_bufnr(ev.buf), version = vim.lsp.util.buf_versions[ev.buf] },
+        },
+      }, 400, ev.buf)
+      if res and res.err then
+        vim.notify('eslint.applyAllFixes: ' .. tostring(res.err.message), vim.log.levels.WARN)
+      end
+    end
   end,
 })
 

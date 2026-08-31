@@ -1,6 +1,11 @@
 -- General
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-vim.keymap.set('n', '<C-n>', ":let @+ = expand('%')<CR>", { desc = 'Copy relative file path' })
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear search highlight' })
+vim.keymap.set(
+  'n',
+  '<C-n>',
+  "<cmd>let @+ = expand('%')<CR>",
+  { silent = true, desc = 'Copy relative file path' }
+)
 
 -- Window Navigation
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })

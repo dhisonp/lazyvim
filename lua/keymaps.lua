@@ -24,3 +24,14 @@ vim.keymap.set(
   '<cmd>FzfLua diagnostics_workspace<CR>',
   { desc = 'See workspace diagnostics' }
 )
+
+-- LSP navigation. Neovim 0.11 binds these globally in its defaults
+-- (runtime/lua/vim/_defaults.lua) to the built-in handlers, which dump results
+-- into the quickfix list; re-binding globally here replaces them with fzf-lua's
+-- picker + preview. `gra` is left alone -- it routes through vim.ui.select,
+-- which register_ui_select() already hands to fzf-lua.
+vim.keymap.set('n', 'grr', '<cmd>FzfLua lsp_references<CR>', { desc = 'Goto references' })
+vim.keymap.set('n', 'gri', '<cmd>FzfLua lsp_implementations<CR>', { desc = 'Goto implementations' })
+vim.keymap.set('n', 'grt', '<cmd>FzfLua lsp_typedefs<CR>', { desc = 'Goto type definitions' })
+vim.keymap.set('n', 'gd', '<cmd>FzfLua lsp_definitions<CR>', { desc = 'Goto definition' })
+vim.keymap.set('n', 'gO', '<cmd>FzfLua lsp_document_symbols<CR>', { desc = 'Document symbols' })

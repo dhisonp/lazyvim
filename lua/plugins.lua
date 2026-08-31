@@ -35,12 +35,23 @@ vim.schedule(function()
     })
   end
 
-  -- register_ui_select() is the only call with an effect: setup() is a no-op
-  -- here, since fzf-lua sets its highlights up at load and the providers are
-  -- left at defaults on purpose -- it already prefers ripgrep for grep and fd
-  -- for files when they are on $PATH.
+  -- Only the window geometry is overridden: the providers are left at defaults
+  -- on purpose -- fzf-lua already prefers ripgrep for grep and fd for files
+  -- when they are on $PATH.
   local ok_fzf, fzf = pcall(require, 'fzf-lua')
   if ok_fzf then
+    fzf.setup({
+      winopts = {
+        height = 0.85,
+        width = 0.80,
+        preview = {
+          scrollbar = false,
+          -- Tested against the fzf window's inner width (0.80 * terminal),
+          -- so 88 keeps the horizontal split down to ~124-cell terminals.
+          flip_columns = 88,
+        },
+      },
+    })
     fzf.register_ui_select()
   end
 end)

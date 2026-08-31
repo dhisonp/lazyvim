@@ -1,12 +1,6 @@
---------------------------------------------------------------------
--- LSP
---
--- Native vim.lsp.config()/vim.lsp.enable() only -- no Mason, no
--- nvim-lspconfig. Every server below is a binary already on $PATH,
--- mirroring ~/.config/helix/languages.toml so Helix and Neovim share
--- one set of installs. `cmd` is spelled out explicitly because there
--- is no lspconfig to supply a default.
---------------------------------------------------------------------
+-- Native vim.lsp.config()/vim.lsp.enable() only -- no Mason, no nvim-lspconfig.
+-- Every server here mirrors ~/.config/helix/languages.toml so Helix and Neovim
+-- share one set of installed binaries; `cmd` is spelled out since there's no lspconfig default.
 
 local ts_filetypes = {
   'javascript',
@@ -30,9 +24,7 @@ local function root_with_fallback(markers)
   end
 end
 
---------------------------------------------------------------------
 -- TypeScript / JavaScript
---------------------------------------------------------------------
 vim.lsp.config('vtsls', {
   cmd = { 'vtsls', '--stdio' },
   filetypes = ts_filetypes,
@@ -121,9 +113,7 @@ vim.lsp.config('eslint', {
   end,
 })
 
---------------------------------------------------------------------
 -- Python
---------------------------------------------------------------------
 vim.lsp.config('ty', {
   cmd = { 'ty', 'server' },
   filetypes = { 'python' },
@@ -149,18 +139,14 @@ vim.lsp.config('ruff', {
   end,
 })
 
---------------------------------------------------------------------
 -- TOML
---------------------------------------------------------------------
 vim.lsp.config('taplo', {
   cmd = { 'taplo', 'lsp', 'stdio' },
   filetypes = { 'toml' },
   root_dir = root_with_fallback({ '.taplo.toml', 'taplo.toml', '.git' }),
 })
 
---------------------------------------------------------------------
 -- Rust
---------------------------------------------------------------------
 vim.lsp.config('rust_analyzer', {
   cmd = { 'rust-analyzer' },
   filetypes = { 'rust' },
@@ -172,9 +158,7 @@ vim.lsp.config('rust_analyzer', {
   },
 })
 
---------------------------------------------------------------------
 -- YAML
---------------------------------------------------------------------
 vim.lsp.config('yamlls', {
   cmd = { 'yaml-language-server', '--stdio' },
   filetypes = { 'yaml' },
@@ -191,13 +175,7 @@ vim.lsp.config('yamlls', {
   },
 })
 
---------------------------------------------------------------------
 -- Lua
---
--- The workspace/globals settings stand in for what lazydev.nvim used to
--- do: teach lua_ls about `vim` and the Neovim runtime while editing this
--- config.
---------------------------------------------------------------------
 vim.lsp.config('lua_ls', {
   cmd = { 'lua-language-server' },
   filetypes = { 'lua' },
@@ -208,6 +186,8 @@ vim.lsp.config('lua_ls', {
     'stylua.toml',
     '.git',
   }),
+  -- Stands in for what lazydev.nvim used to do: teach lua_ls about `vim`
+  -- and the Neovim runtime.
   settings = {
     Lua = {
       runtime = { version = 'LuaJIT' },
@@ -222,9 +202,7 @@ vim.lsp.config('lua_ls', {
   },
 })
 
---------------------------------------------------------------------
 -- Enable
---------------------------------------------------------------------
 vim.lsp.enable({
   'eslint',
   'lua_ls',

@@ -3,7 +3,6 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Bootstrap
 local plug = vim.fn.stdpath 'data' .. '/site/autoload/plug.vim'
 local bootstrapped = false
 

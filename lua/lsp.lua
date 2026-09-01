@@ -16,7 +16,6 @@ local function root_with_fallback(markers)
   end
 end
 
--- TypeScript / JavaScript
 vim.lsp.config('vtsls', {
   cmd = { 'vtsls', '--stdio' },
   filetypes = ts_filetypes,
@@ -114,7 +113,6 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   end,
 })
 
--- Python
 vim.lsp.config('ty', {
   cmd = { 'ty', 'server' },
   filetypes = { 'python' },
@@ -127,7 +125,6 @@ vim.lsp.config('ty', {
   }),
 })
 
--- Ruff
 vim.lsp.config('ruff', {
   cmd = { 'ruff', 'server' },
   filetypes = { 'python' },
@@ -137,14 +134,12 @@ vim.lsp.config('ruff', {
   end,
 })
 
--- TOML
 vim.lsp.config('taplo', {
   cmd = { 'taplo', 'lsp', 'stdio' },
   filetypes = { 'toml' },
   root_dir = root_with_fallback({ '.taplo.toml', 'taplo.toml', '.git' }),
 })
 
--- Rust
 vim.lsp.config('rust_analyzer', {
   cmd = { 'rust-analyzer' },
   filetypes = { 'rust' },
@@ -156,7 +151,6 @@ vim.lsp.config('rust_analyzer', {
   },
 })
 
--- YAML
 vim.lsp.config('yamlls', {
   cmd = { 'yaml-language-server', '--stdio' },
   filetypes = { 'yaml' },
@@ -173,7 +167,6 @@ vim.lsp.config('yamlls', {
   },
 })
 
--- Lua
 vim.lsp.config('lua_ls', {
   cmd = { 'lua-language-server' },
   filetypes = { 'lua' },
@@ -200,12 +193,32 @@ vim.lsp.config('lua_ls', {
   },
 })
 
--- Zig
 vim.lsp.config('zls', {
   cmd = { 'zls' },
   filetypes = { 'zig', 'zir' },
   root_markers = { 'build.zig.zon', 'build.zig', '.git' },
 })
+
+-- prettier and stylua read .prettierrc/.stylua.toml; the language servers don't.
+local prettier = { 'prettier', '--stdin-filepath', '%s' }
+local formatters = {
+  lua = { 'stylua', '--stdin-filepath', '%s', '-' },
+}
+local prettier_filetypes = { 'css', 'html', 'json', 'jsonc', 'markdown', 'scss' }
+for _, ft in ipairs(vim.list_extend(prettier_filetypes, ts_filetypes)) do
+  formatters[ft] = prettier
+end
+
+-- prettier is rarely installed globally, so prefer the project's own copy.
+local function resolve(cmd, name)
+  for dir in vim.fs.parents(name) do
+    local bin = dir .. '/node_modules/.bin/' .. cmd
+    if vim.fn.executable(bin) == 1 then
+      return bin
+    end
+  end
+  return vim.fn.executable(cmd) == 1 and cmd or nil
+end
 
 vim.api.nvim_create_user_command('Fmt', function(opts)
   local range
@@ -215,10 +228,33 @@ vim.api.nvim_create_user_command('Fmt', function(opts)
       ['end'] = { opts.line2, vim.fn.col({ opts.line2, '$' }) - 1 },
     }
   end
-  vim.lsp.buf.format({ range = range })
-end, { range = true, desc = 'Format buffer or range via LSP' })
 
--- Enable
+  local name = vim.api.nvim_buf_get_name(0)
+  local argv = formatters[vim.bo.filetype]
+  local bin = (argv and not range and name ~= '') and resolve(argv[1], name) or nil
+  if not argv or not bin then
+    return vim.lsp.buf.format({ range = range })
+  end
+
+  local cmd = { bin }
+  for i = 2, #argv do
+    cmd[i] = (argv[i]:gsub('%%s', name))
+  end
+
+  local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+  local res = vim.system(cmd, { stdin = lines }):wait()
+  if res.code ~= 0 then
+    return vim.notify(vim.trim(res.stderr), vim.log.levels.WARN)
+  end
+
+  local out = vim.split((res.stdout:gsub('\n$', '')), '\n')
+  if not vim.deep_equal(lines, out) then
+    local view = vim.fn.winsaveview()
+    vim.api.nvim_buf_set_lines(0, 0, -1, false, out)
+    vim.fn.winrestview(view)
+  end
+end, { range = true, desc = 'Format buffer or range' })
+
 vim.lsp.enable({
   'eslint',
   'lua_ls',

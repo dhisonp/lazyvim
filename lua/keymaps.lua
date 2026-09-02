@@ -11,9 +11,10 @@ vim.keymap.set(
   { desc = 'See workspace diagnostics' }
 )
 
+vim.keymap.set('i', '<C-Space>', vim.lsp.completion.get, { desc = 'Trigger LSP completion' })
+
 vim.keymap.set('n', 'grr', '<cmd>FzfLua lsp_references<CR>', { desc = 'Goto references' })
 vim.keymap.set('n', 'gri', '<cmd>FzfLua lsp_implementations<CR>', { desc = 'Goto implementations' })
 vim.keymap.set('n', 'grt', '<cmd>FzfLua lsp_typedefs<CR>', { desc = 'Goto type definitions' })
 vim.keymap.set('n', 'gd', '<cmd>FzfLua lsp_definitions<CR>', { desc = 'Goto definition' })
 vim.keymap.set('n', 'gO', '<cmd>FzfLua lsp_document_symbols<CR>', { desc = 'Document symbols' })
-

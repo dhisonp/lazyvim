@@ -25,6 +25,8 @@ vim.opt.shortmess:append 'I'
 
 vim.o.clipboard = 'unnamedplus'
 
+vim.o.completeopt = 'menu,menuone,noselect,popup'
+
 vim.o.signcolumn = 'yes'
 vim.o.winborder = 'rounded'
 

@@ -15,7 +15,7 @@ vim.api.nvim_create_autocmd('PackChanged', {
 vim.pack.add({
   { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
   'https://github.com/ibhagwan/fzf-lua',
-  'https://github.com/ishan9299/modus-theme-vim',
+  'https://github.com/rebelot/kanagawa.nvim',
   'https://github.com/lewis6991/gitsigns.nvim',
 }, { confirm = false })
 

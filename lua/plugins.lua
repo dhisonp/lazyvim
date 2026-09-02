@@ -1,4 +1,4 @@
-vim.cmd.colorscheme 'modus-vivendi'
+vim.cmd.colorscheme 'kanagawa'
 
 vim.schedule(function()
   -- On treesitter's `main` branch parsers are installed imperatively. install()

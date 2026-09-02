@@ -18,7 +18,7 @@ local pack_ok, pack_err = pcall(vim.pack.add, {
   'https://github.com/ishan9299/modus-theme-vim',
 }, { confirm = false })
 if not pack_ok then
-  vim.notify(pack_err, vim.log.levels.WARN)
+  vim.notify(tostring(pack_err), vim.log.levels.WARN)
 end
 
 require 'options'

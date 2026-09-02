@@ -1,7 +1,4 @@
--- pcall-guarded: a failed or interrupted bootstrap degrades to a working
--- bare config instead of an error wall on every launch.
-vim.o.background = 'dark'
-pcall(vim.cmd.colorscheme, 'oxocarbon')
+pcall(vim.cmd.colorscheme, 'modus-vivendi')
 
 -- Deferred off the startup path (~12ms). Neither call is needed before the
 -- first screen: parsers already on disk are picked up by vim.treesitter.start

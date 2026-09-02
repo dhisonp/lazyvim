@@ -35,16 +35,16 @@ end
 -- because an unusable plug.vim would otherwise abort this file and take
 -- options, keymaps and lsp down with it; on failure we delete it so the next
 -- launch re-bootstraps, and run bare for this one.
-local plug_ok = pcall(
-  vim.cmd,
-  [[
+local plug_ok = pcall(function()
+  vim.cmd [[
   call plug#begin()
   Plug 'nvim-treesitter/nvim-treesitter', { 'branch': 'main', 'do': ':TSUpdate' }
   Plug 'ibhagwan/fzf-lua'
   Plug 'tanvirtin/monokai.nvim'
+  Plug 'nyoom-engineering/oxocarbon.nvim'
   call plug#end()
 ]]
-)
+end)
 
 if not plug_ok then
   vim.fn.delete(plug)

@@ -1,43 +1,31 @@
 # Neovim Config
 
-Personal Neovim configuration built on Neovim's built-in plugin manager
+Personal Neovim config on the built-in plugin manager
 ([vim.pack](https://neovim.io/doc/user/pack/#vim.pack)) and native LSP. Deliberately close to
-vanilla Neovim — built-in mappings and defaults are preferred over config wherever they do the job.
-No Mason, no LSP installer, no completion plugin: what's here is spelled out explicitly rather than
-layered behind a framework.
-
-## Setup
+vanilla: built-ins are preferred over config wherever they do the job, no Mason or completion
+plugin hides what is happening, and nothing is wrapped in `pcall` — four plugins is few enough
+that a broken one should say so.
 
 ```bash
 git clone git@github.com:dhisonp/nvim-config.git ~/.config/nvim
 nvim
 ```
 
-Plugins install on first launch; `nvim-pack-lock.json` pins their revisions. Update with
-`:lua vim.pack.update()` (review, then `:write`); treesitter parsers rebuild automatically
-afterwards.
-
-**Prerequisites:** Neovim 0.12+, a Nerd Font, a C compiler (for Treesitter parsers), `git`, `fd`,
-`ripgrep`, `fzf`.
-
-## Structure
-
 ```
 init.lua            # Leader, plugin list (vim.pack), requires
-nvim-pack-lock.json # Plugin revisions, written by vim.pack
 lua/options.lua     # Editor options and diagnostic config
 lua/keymaps.lua     # Keymaps
-lua/plugins.lua     # Colorscheme, treesitter, fzf-lua
 lua/autocmds.lua    # Autocommands
-lua/lsp.lua         # Language servers
+lua/lsp.lua         # Language servers, formatting (:Fmt)
+lua/plugins.lua     # Colorscheme, treesitter, fzf-lua, gitsigns
 ```
 
-Language servers are configured with Neovim's native `vim.lsp.config()` / `vim.lsp.enable()`
-rather than `nvim-lspconfig`, so every server's `cmd` is spelled out in `lua/lsp.lua` and must be
-installed manually and be on `$PATH`. Formatting is LSP-only, with one exception noted inline in
-that file.
+Plugins install on first launch, pinned by `nvim-pack-lock.json`; update with
+`:lua vim.pack.update()` (review, then `:write`). Each server's `cmd` and `settings` are spelled
+out in `lua/lsp.lua` rather than pulled from `nvim-lspconfig`, so servers are installed manually —
+`:checkhealth vim.lsp` names any that are missing. Plugin setup is deferred off the startup path;
+treesitter parsers are declared in `lua/plugins.lua` and started per-buffer from
+`lua/autocmds.lua`.
 
-Treesitter parsers are declared in `lua/plugins.lua` and started per-buffer from an autocommand
-in `lua/autocmds.lua`.
-
-Formatted with [StyLua](https://github.com/JohnnyMorganz/StyLua) — see `.stylua.toml`.
+**Needs:** Neovim 0.12+, a Nerd Font, a C compiler, `git`, `fd`, `ripgrep`, `fzf`. Formatted with
+[StyLua](https://github.com/JohnnyMorganz/StyLua).

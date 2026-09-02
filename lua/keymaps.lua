@@ -10,6 +10,9 @@ vim.keymap.set(
   '<cmd>FzfLua diagnostics_workspace<CR>',
   { desc = 'See workspace diagnostics' }
 )
+vim.keymap.set('n', '<leader>g', function()
+  require('fzf-lua').git_status()
+end, { desc = 'Git status' })
 
 vim.keymap.set('i', '<C-Space>', vim.lsp.completion.get, { desc = 'Trigger LSP completion' })
 

@@ -255,19 +255,11 @@ vim.api.nvim_create_user_command('Fmt', function(opts)
   end
 end, { range = true, desc = 'Format buffer or range' })
 
--- autotrigger only fires on the server's triggerCharacters (typically `.`),
--- so identifier characters are added to also complete while typing a name.
-local identifier_chars =
-  vim.split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_', '')
-
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('lsp-autocompletion', { clear = true }),
   callback = function(ev)
-    local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
-    local provider = client.server_capabilities.completionProvider
-    if provider then
-      provider.triggerCharacters =
-        vim.list_extend(provider.triggerCharacters or {}, identifier_chars)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if client and client:supports_method 'textDocument/completion' then
       vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
     end
   end,

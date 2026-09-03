@@ -24,6 +24,7 @@ vim.schedule(function()
     'vim',
     'vimdoc',
     'yaml',
+    'zig',
   })
 
   -- Allow vertical split on widths >= 124

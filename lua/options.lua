@@ -13,5 +13,7 @@ vim.o.shiftwidth = 2
 -- Preserve formatter's decision on trailing newlines
 vim.o.fixendofline = false
 
--- Hide intro screen
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect', 'popup' }
+
+-- Hide intro
 vim.opt.shortmess:append 'sI'

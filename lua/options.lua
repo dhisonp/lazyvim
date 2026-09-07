@@ -14,5 +14,4 @@ vim.o.shiftwidth = 2
 vim.o.fixendofline = false
 
 -- Hide intro screen
-vim.opt.shortmess:append("sI")
-
+vim.opt.shortmess:append 'sI'

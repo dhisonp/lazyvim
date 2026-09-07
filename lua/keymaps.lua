@@ -14,8 +14,6 @@ vim.keymap.set('n', '<leader>g', function()
   require('fzf-lua').git_status()
 end, { desc = 'Git status' })
 
-vim.keymap.set('i', '<C-Space>', vim.lsp.completion.get, { desc = 'Trigger LSP completion' })
-
 vim.keymap.set('n', 'grr', '<cmd>FzfLua lsp_references<CR>', { desc = 'Goto references' })
 vim.keymap.set('n', 'gri', '<cmd>FzfLua lsp_implementations<CR>', { desc = 'Goto implementations' })
 vim.keymap.set('n', 'grt', '<cmd>FzfLua lsp_typedefs<CR>', { desc = 'Goto type definitions' })

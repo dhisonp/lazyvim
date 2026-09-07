@@ -1,8 +1,14 @@
+vim.pack.add({
+  { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
+  'https://github.com/ibhagwan/fzf-lua',
+  'https://github.com/rebelot/kanagawa.nvim',
+  'https://github.com/lewis6991/gitsigns.nvim',
+  'https://github.com/neovim/nvim-lspconfig',
+})
+
 vim.cmd.colorscheme 'kanagawa'
 
 vim.schedule(function()
-  -- On treesitter's `main` branch parsers are installed imperatively. install()
-  -- is a no-op for parsers already present.
   require('nvim-treesitter').install({
     'bash',
     'css',

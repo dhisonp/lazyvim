@@ -13,6 +13,10 @@ vim.keymap.set(
 vim.keymap.set('n', '<leader>g', function()
   require('fzf-lua').git_status()
 end, { desc = 'Git status' })
+vim.keymap.set('n', '<leader>tt', function()
+  vim.o.background = vim.o.background == 'dark' and 'light' or 'dark'
+end, { desc = 'Toggle background' })
+vim.keymap.set('n', '<leader>tp', '<cmd>FzfLua colorschemes<CR>', { desc = 'Pick colorscheme' })
 
 vim.keymap.set('n', 'grr', '<cmd>FzfLua lsp_references<CR>', { desc = 'Goto references' })
 vim.keymap.set('n', 'gri', '<cmd>FzfLua lsp_implementations<CR>', { desc = 'Goto implementations' })

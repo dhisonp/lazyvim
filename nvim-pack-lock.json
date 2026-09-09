@@ -12,14 +12,6 @@
       "rev": "bb85e4bfc8d89b0e62c8fa53ccdd13d12e2f77b3",
       "src": "https://github.com/rebelot/kanagawa.nvim"
     },
-    "modus-theme-vim": {
-      "rev": "4d827fbf1aad55f4d62225f7b999efc5023864a3",
-      "src": "https://github.com/ishan9299/modus-theme-vim"
-    },
-    "molokai": {
-      "rev": "c67bdfcdb31415aa0ade7f8c003261700a885476",
-      "src": "https://github.com/tomasr/molokai"
-    },
     "nvim-lspconfig": {
       "rev": "456f8cc94438de35ff2294454019e7b780b73514",
       "src": "https://github.com/neovim/nvim-lspconfig"

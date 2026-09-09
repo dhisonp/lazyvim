@@ -23,6 +23,7 @@ vim.keymap.set('n', 'gri', '<cmd>FzfLua lsp_implementations<CR>', { desc = 'Goto
 vim.keymap.set('n', 'grt', '<cmd>FzfLua lsp_typedefs<CR>', { desc = 'Goto type definitions' })
 vim.keymap.set('n', 'gd', '<cmd>FzfLua lsp_definitions<CR>', { desc = 'Goto definition' })
 vim.keymap.set('n', 'gO', '<cmd>FzfLua lsp_document_symbols<CR>', { desc = 'Document symbols' })
+vim.keymap.set('n', '<leader>a', '<cmd>FzfLua lsp_code_actions<CR>', { desc = 'Code actions' })
 
 vim.keymap.set('n', ']h', function()
   require('gitsigns').nav_hunk 'next'

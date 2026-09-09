@@ -1,9 +1,10 @@
 vim.pack.add({
   { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
   'https://github.com/ibhagwan/fzf-lua',
-  'https://github.com/rebelot/kanagawa.nvim',
   'https://github.com/lewis6991/gitsigns.nvim',
   'https://github.com/neovim/nvim-lspconfig',
+  'https://github.com/rebelot/kanagawa.nvim',
+	'https://github.com/Mofiqul/adwaita.nvim',
 })
 
 -- TODO: Review performance

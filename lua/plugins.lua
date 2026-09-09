@@ -6,6 +6,23 @@ vim.pack.add({
   'https://github.com/neovim/nvim-lspconfig',
 })
 
+-- TODO: Review performance
+vim.api.nvim_create_autocmd('VimEnter', {
+  once = true,
+  callback = function()
+    vim.schedule(function()
+      local inactive = vim.iter(vim.pack.get())
+        :filter(function(p) return not p.active end)
+        :map(function(p) return p.spec.name end)
+        :totable()
+      if #inactive > 0 then
+        vim.pack.del(inactive)
+        vim.notify('vim.pack: removed ' .. table.concat(inactive, ', '), vim.log.levels.INFO)
+      end
+    end)
+  end,
+})
+
 vim.cmd.colorscheme 'kanagawa'
 
 vim.schedule(function()

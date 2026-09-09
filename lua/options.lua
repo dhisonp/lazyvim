@@ -15,5 +15,7 @@ vim.o.fixendofline = false
 
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect', 'popup' }
 
+vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+
 -- Hide intro
 vim.opt.shortmess:append 'sI'

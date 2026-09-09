@@ -1,10 +1,11 @@
 vim.pack.add({
   { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
+  'https://github.com/stevearc/conform.nvim',
   'https://github.com/ibhagwan/fzf-lua',
   'https://github.com/lewis6991/gitsigns.nvim',
   'https://github.com/neovim/nvim-lspconfig',
   'https://github.com/rebelot/kanagawa.nvim',
-	'https://github.com/Mofiqul/adwaita.nvim',
+  'https://github.com/Mofiqul/adwaita.nvim',
 })
 
 -- TODO: Review performance
@@ -12,9 +13,14 @@ vim.api.nvim_create_autocmd('VimEnter', {
   once = true,
   callback = function()
     vim.schedule(function()
-      local inactive = vim.iter(vim.pack.get())
-        :filter(function(p) return not p.active end)
-        :map(function(p) return p.spec.name end)
+      local inactive = vim
+        .iter(vim.pack.get())
+        :filter(function(p)
+          return not p.active
+        end)
+        :map(function(p)
+          return p.spec.name
+        end)
         :totable()
       if #inactive > 0 then
         vim.pack.del(inactive)
@@ -66,4 +72,29 @@ vim.schedule(function()
   fzf.register_ui_select()
 
   require('gitsigns').setup()
+
+  local prettier = { 'prettier' }
+  require('conform').setup({
+    formatters_by_ft = {
+      css = prettier,
+      html = prettier,
+      javascript = prettier,
+      javascriptreact = prettier,
+      json = prettier,
+      lua = { 'stylua' },
+      markdown = prettier,
+      python = { 'ruff_organize_imports', 'ruff_format' },
+      rust = { 'rustfmt' },
+      sh = { 'shfmt' },
+      toml = { 'taplo' },
+      typescript = prettier,
+      typescriptreact = prettier,
+      yaml = prettier,
+      zig = { 'zigfmt' },
+    },
+  })
+
+  vim.api.nvim_create_user_command('Fmt', function()
+    require('conform').format({ async = true })
+  end, {})
 end)
